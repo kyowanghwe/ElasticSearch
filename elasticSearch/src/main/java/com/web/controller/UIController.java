@@ -18,24 +18,17 @@ public class UIController {
 	@GetMapping("/")
 	public String viewHomePage(Model model) throws IOException {
 		model.addAttribute("listProductDocuments", elasticSearchQuery.searchAllDocuments());
-		System.out.println("=============home");
 		return "index";
-	}
-
-	@GetMapping("/test")
-	public String test() {
-		return "home";
 	}
 
 	@PostMapping("/saveProduct")
 	public String saveProduct(@ModelAttribute("product") Product product) throws IOException {
 		elasticSearchQuery.createOrUpdateDocument(product);
-		return "redirect:/showNewProductForm";
+		return "redirect:/";
 	}
 
 	@GetMapping("/showFormForUpdate/{id}")
 	public String showFormForUpdate(@PathVariable(value = "id") String id, Model model) throws IOException {
-
 		Product product = elasticSearchQuery.getDocumentById(id);
 		model.addAttribute("product", product);
 		return "updateProductDocument";

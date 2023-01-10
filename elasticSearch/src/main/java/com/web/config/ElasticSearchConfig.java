@@ -20,7 +20,10 @@ public class ElasticSearchConfig {
 	@Bean
 	RestClient getRestClient() {
 		Header[] headers = { new BasicHeader(HttpHeaders.CONTENT_TYPE, "application/json") };
-		RestClient restClient = RestClient.builder(new HttpHost("localhost", 9200)).setDefaultHeaders(headers)
+		RestClient restClient = RestClient.builder(new HttpHost("localhost", 9200))
+				// Set header to request
+				.setDefaultHeaders(headers)
+				// Set header to response
 				.setHttpClientConfigCallback(hc -> hc.addInterceptorLast((HttpResponseInterceptor) (response,
 						context) -> response.addHeader(new BasicHeader("X-Elastic-Product", "Elasticsearch"))))
 				.build();

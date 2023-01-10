@@ -69,10 +69,8 @@ public class ElasticSearchQuery {
 		List<Hit> hits = searchResponse.hits().hits();
 		List<Product> products = new ArrayList<>();
 		for (Hit object : hits) {
-
 			System.out.print(((Product) object.source()));
 			products.add((Product) object.source());
-
 		}
 		return products;
 	}
