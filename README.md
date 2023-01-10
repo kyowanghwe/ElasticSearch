@@ -4,5 +4,5 @@
 
 https://www.pixeltrice.com/spring-boot-elasticsearch-crud-example/
 
-### ElasticSearch 7.10.0
-### GUI: Kaizen 6.850
+### `ElasticSearch 7.10.0`
+### `GUI: Kaizen 6.850`
